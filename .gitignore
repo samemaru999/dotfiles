@@ -1,0 +1,13 @@
+### all ignore ###
+/*
+/**
+
+### not ignore ###
+!/README.md
+!/.zshenv
+!/.zsh/
+!/.zsh/.zshenv
+!/.zsh/.zprofile
+!/.zsh/.zshrc
+!/scripts/
+!/.gitignore
