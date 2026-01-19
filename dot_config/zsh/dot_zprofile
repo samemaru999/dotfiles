@@ -19,4 +19,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 ###### mise ######
 eval "$(mise activate zsh --shims)"
 
-###export _Z_DATA="$XDG_DATA_HOME/z"
+# 最後に PATH を重複排除（順序は「先に出てきたもの」が残る）
+typeset -U path PATH
+export PATH

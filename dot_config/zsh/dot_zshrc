@@ -59,6 +59,11 @@ fi
 
 ###### alias  ######
 alias ls="eza --icons --time-style relative -F always --hyperlink -h"
+source "${ZDOTDIR:-$HOME/.config/zsh}/rc/boot-zellij.zsh"
 
-. "$HOME/.local/share/../bin/env"
+# CC-基本構成
+alias cc="claude --mcp-config=$CLAUDE_CONFIG_DIR/.mcp.json"
+
+# 開発用
+alias c-dev="claude --mcp-config=$CLAUDE_CONFIG_DIR/dev.mcp.json"
 
