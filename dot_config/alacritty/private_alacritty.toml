@@ -60,7 +60,7 @@ option_as_alt = "None"  # Default: "None"
 size = 15  # Default: 11.25
 
 # Offset is extra space around each character
-#offset = { x = 0, y = 1 }  # Default: x = 0, y = 0
+offset = { x = 0, y = 0 }  # Default: x = 0, y = 0
 
 # Glyph offset determines the locations of the glyphs within their cells
 #glyph_offset = { x = 0, y = 0 }  # Default: x = 0, y = 0
@@ -92,7 +92,7 @@ regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:
 # Example
 bindings = [
      { key = "N", mods = "Control|Shift", action = "CreateNewWindow" },
-    # { key = "L", mods = "Control|Shift", chars = "l" },
+     { key = "Back", mods = "Command", chars ="\u0015"}, # all del left to cursur
 ]
 
 
