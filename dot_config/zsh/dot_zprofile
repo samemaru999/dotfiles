@@ -1,5 +1,5 @@
-export TERMINFO="$XDG_DATA_HOME"/terminfo
-export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
+#export TERMINFO="$XDG_DATA_HOME"/terminfo
+#export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 
 ##### Antigravity #####
 export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
@@ -15,6 +15,12 @@ export PATH="$HOME/.local/bin:$PATH"
 
 ###### Homebrew ######
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Homebrew ncurses tools (keg-only)
+if command -v brew >/dev/null 2>&1; then
+  _ncurses_bin="$(brew --prefix ncurses 2>/dev/null)/bin"
+  [[ -d "$_ncurses_bin" ]] && export PATH="$_ncurses_bin:$PATH"
+fi
 
 ###### mise ######
 eval "$(mise activate zsh --shims)"
