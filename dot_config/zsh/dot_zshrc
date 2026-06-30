@@ -1,10 +1,16 @@
-#. /opt/homebrew/opt/asdf/libexec/asdf.sh    # source = . 
+# Skip interactive-only setup when zsh is sourced by non-interactive shells or
+# dumb terminals.  Completion, ZLE widgets, and starship prompt rendering are
+# unsafe there and can emit noisy startup errors.
+if [[ ! -o interactive || "${TERM:-dumb}" == "dumb" ]]; then
+  return 0
+fi
+
 ##### Loading #####
 # sheldon (zsh-completions含む)
 eval "$(sheldon source)"
 
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/s_kuroiwa/.docker/completions $fpath)
+fpath=($HOME/.docker/completions $fpath)
 
 # 補完システム初期化（sheldonの直後）
 autoload -Uz compinit
@@ -51,19 +57,22 @@ setopt share_history          # 履歴を複数端末で共有する
 # source "${ZDOTDIR:-$HOME}/rc/set_ad.zsh"
 
 ##### fastfetch ######
-if command -v fastfetch &> /dev/null; then
-  if [ ${SHLVL} -eq 1 ]; then
-    fastfetch
-  fi
-fi
+#if command -v fastfetch &> /dev/null; then
+#  if [ ${SHLVL} -eq 1 ]; then
+#    fastfetch
+#  fi
+#fi
 
 ###### alias  ######
 alias ls="eza --icons --time-style relative -F always --hyperlink -h"
 source "${ZDOTDIR:-$HOME/.config/zsh}/rc/boot-zellij.zsh"
 
 # CC-基本構成
-alias cc="claude --mcp-config=$CLAUDE_CONFIG_DIR/.mcp.json"
+alias cc="claude --mcp-config=$HOME/.claude/base.mcp.json"
 
 # 開発用
-alias c-dev="claude --mcp-config=$CLAUDE_CONFIG_DIR/dev.mcp.json"
+alias c-dev="claude --mcp-config=$HOME/.claude/dev.mcp.json"
 
+
+# Pi
+export PATH="$HOME/.local/share/mise/installs/node/24.4.0/bin:$PATH"

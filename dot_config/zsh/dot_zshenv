@@ -11,5 +11,6 @@ export XDG_STATE_HOME="$HOME"/.local/state
 export TERMINFO="$XDG_DATA_HOME"/terminfo
 export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 
-## Claude Code ##
-export CLAUDE_CONFIG_DIR="$HOME"/.config/claude
+##### Machine-local secrets (NOT managed by chezmoi) #####
+# Holds e.g. OBSIDIAN_API_KEY, consumed by chezmoi templates via {{ env "VAR" }}.
+[ -r "${ZDOTDIR:-$HOME/.config/zsh}/.zshenv.local" ] && source "${ZDOTDIR:-$HOME/.config/zsh}/.zshenv.local"

@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "obsidian-mcp-tools": {
+      "type": "stdio",
+      "command": "{{ .chezmoi.homeDir }}/obsidian/Documents/.obsidian/plugins/mcp-tools/bin/mcp-server",
+      "args": [
+        "--vault",
+        "{{ .chezmoi.homeDir }}/obsidian/Documents",
+        "--rest-api-port",
+        "27123"
+      ],
+      "env": {
+        "OBSIDIAN_API_KEY": "{{ if env "OBSIDIAN_API_KEY" }}{{ env "OBSIDIAN_API_KEY" }}{{ else }}{{ fail "OBSIDIAN_API_KEY env var must be set (see ~/.config/zsh/.zshenv.local)" }}{{ end }}"
+      }
+    },
+    "deepwiki": {
+      "type": "http",
+      "url": "https://mcp.deepwiki.com/mcp"
+    },
+    "drawio": {
+      "command": "npx",
+      "args": ["@drawio/mcp"]
+    }
+  }
+}
