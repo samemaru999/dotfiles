@@ -22,7 +22,7 @@ if command -v brew >/dev/null 2>&1; then
   [[ -d "$_ncurses_bin" ]] && export PATH="$_ncurses_bin:$PATH"
 fi
 
-###### mise ######
+###### mise shims for login and non-interactive sessions ######
 eval "$(mise activate zsh --shims)"
 
 # 最後に PATH を重複排除（順序は「先に出てきたもの」が残る）

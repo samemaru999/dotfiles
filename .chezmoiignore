@@ -1,2 +1,7 @@
 # Machine-local secrets — never manage these with chezmoi.
 .config/zsh/.zshenv.local
+
+# Repository metadata, not home-directory targets.
+README.md
+docs/
+result

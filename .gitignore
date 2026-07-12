@@ -11,3 +11,9 @@
 #!/.zsh/.zshrc
 #!/scripts/
 #!/.gitignore
+
+# Sketchybar helpers are rebuilt for each machine.
+dot_config/sketchybar/helpers/**/bin/
+
+# Nix build output symlink.
+/result

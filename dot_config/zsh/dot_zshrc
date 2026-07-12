@@ -73,6 +73,5 @@ alias cc="claude --mcp-config=$HOME/.claude/base.mcp.json"
 # 開発用
 alias c-dev="claude --mcp-config=$HOME/.claude/dev.mcp.json"
 
-
-# Pi
-export PATH="$HOME/.local/share/mise/installs/node/24.4.0/bin:$PATH"
+# Added by Antigravity IDE
+export PATH="$HOME/.antigravity-ide/antigravity-ide/bin:$PATH"

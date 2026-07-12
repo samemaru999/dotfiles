@@ -1,0 +1,23 @@
+{ ... }:
+
+{
+  imports = [
+    ./system.nix
+    ./pkgs.nix
+    ./homebrew.nix
+  ];
+
+  nixpkgs = {
+    hostPlatform = "{{ if eq .chezmoi.arch "arm64" }}aarch64-darwin{{ else }}x86_64-darwin{{ end }}";
+    config.allowUnfree = true;
+  };
+
+  system = {
+    primaryUser = "{{ .chezmoi.username }}";
+    stateVersion = 6; # nix-darwin の状態バージョン. 初回設定後は不用意に変更しない
+  };
+
+  users.users."{{ .chezmoi.username }}" = {
+    home = "{{ .chezmoi.homeDir }}";
+  };
+}
