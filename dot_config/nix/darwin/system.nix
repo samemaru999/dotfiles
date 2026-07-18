@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   sketchybar-app-font-bg = pkgs.stdenvNoCC.mkDerivation {
@@ -36,6 +41,12 @@ in
   environment.variables = {
     ZDOTDIR = "$HOME/.config/zsh";
   };
+
+  launchd.user.envVariables.PATH = lib.concatStringsSep ":" [
+    "/run/current-system/sw/bin"
+    "/nix/var/nix/profiles/default/bin"
+    "/opt/homebrew/bin"
+  ];
 
   programs.zsh.enable = true;
 
